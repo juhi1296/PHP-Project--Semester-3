@@ -1,0 +1,69 @@
+<?php 
+if (isset($_POST['name']) && isset($_POST['pwd'])) {
+
+  	$name = $_POST['name'];
+  	$pwd = $_POST['pwd'];
+
+  	if (isset($_POST['chb']) && $_POST['chb'] == 'on') {
+    
+    	setcookie('name', $name, time()+(60*2));
+    	setcookie('pwd', $pwd, time()+(60*2));  
+ 	 } 
+  	else {
+    	setcookie('name', $name, time()+(60*1));
+    	setcookie('pwd', $pwd, time()+(60*1));
+ 	 }
+
+}	
+echo"	<html>
+	<body>
+	<b><h1 align=center></h1></b>
+	<hr>
+	<form action=\"welcome.php\" method=\"POST\">
+	<table border=\"1\" align=\"center\">
+	<tr align=\"center\"><td colspan=\"2\">";
+	
+	if(isset($_GET['msg']))
+	{
+		echo $_GET['msg'] ,"";
+	}
+	
+echo"</td>	</tr>
+	<th>UserName:</th>
+	<td><input type=\"text\" name = \"name\" placeholder = \"Enter Your Name\"></td>
+	</tr>
+	<tr>
+	<th>Password</th>
+	<td><input type=\"password\" name = \"pwd\" placeholder = \"Enter Your Password\" ></td>
+	</tr>
+	<tr>
+	<td align=\"center\"><input type = \"submit\" value = \"Login\"></td>
+	<td align=\"center\"><input type = \"reset\" value = \"Reset\"></td>
+	</tr>
+	<tr>
+	<th colspan = \"2\"> <a href=\"registration.php\">New User?</a> </th>
+	</tr>
+	<tr>
+	<th>Remember me</th>
+	<td><input type=\"checkbox\" name=\"chb\"></td>
+	</tr>";
+	
+	
+/* else {
+  $name = '';
+  $pwd = '';
+
+  if (isset($_COOKIE['name'])) {
+    $name = $_COOKIE['name'];
+  }
+
+  if (isset($_COOKIE['pwd'])) {
+    $pwd = $_COOKIE['pwd'];
+  }
+}*/
+	
+	
+echo	"</table>
+	</body>
+	</html>";
+?>
